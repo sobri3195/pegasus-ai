@@ -148,7 +148,7 @@ RUN ARCH=$(uname -m) && \
     rm caido-cli.tar.gz && \
     mv caido-cli /usr/local/bin/
 
-ENV STRIX_SANDBOX_MODE=true
+ENV PEGASUS_AI_SANDBOX_MODE=true
 ENV PYTHONPATH=/app
 ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
 ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
@@ -166,17 +166,18 @@ RUN /app/venv/bin/pip install -r /home/pentester/tools/jwt_tool/requirements.txt
 
 RUN echo "# Sandbox Environment" > README.md
 
-COPY strix/__init__.py strix/
-COPY strix/runtime/tool_server.py strix/runtime/__init__.py strix/runtime/runtime.py /app/strix/runtime/
+COPY pegasus_ai/__init__.py pegasus_ai/
+COPY pegasus_ai/runtime/tool_server.py pegasus_ai/runtime/__init__.py pegasus_ai/runtime/runtime.py /app/pegasus_ai/runtime/
 
-COPY strix/tools/__init__.py strix/tools/registry.py strix/tools/executor.py strix/tools/argument_parser.py /app/strix/tools/
+COPY pegasus_ai/tools/__init__.py pegasus_ai/tools/registry.py pegasus_ai/tools/executor.py pegasus_ai/tools/argument_parser.py /app/pegasus_ai/tools/
 
-COPY strix/tools/browser/ /app/strix/tools/browser/
-COPY strix/tools/file_edit/ /app/strix/tools/file_edit/
-COPY strix/tools/notes/ /app/strix/tools/notes/
-COPY strix/tools/python/ /app/strix/tools/python/
-COPY strix/tools/terminal/ /app/strix/tools/terminal/
-COPY strix/tools/proxy/ /app/strix/tools/proxy/
+COPY pegasus_ai/tools/browser/ /app/pegasus_ai/tools/browser/
+COPY pegasus_ai/tools/file_edit/ /app/pegasus_ai/tools/file_edit/
+COPY pegasus_ai/tools/notes/ /app/pegasus_ai/tools/notes/
+COPY pegasus_ai/tools/python/ /app/pegasus_ai/tools/python/
+COPY pegasus_ai/tools/terminal/ /app/pegasus_ai/tools/terminal/
+COPY pegasus_ai/tools/proxy/ /app/pegasus_ai/tools/proxy/
+COPY pegasus_ai/tools/pentest/ /app/pegasus_ai/tools/pentest/
 
 RUN echo 'export PATH="/home/pentester/go/bin:/home/pentester/.local/bin:/home/pentester/.npm-global/bin:$PATH"' >> /home/pentester/.bashrc && \
     echo 'export PATH="/home/pentester/go/bin:/home/pentester/.local/bin:/home/pentester/.npm-global/bin:$PATH"' >> /home/pentester/.profile
