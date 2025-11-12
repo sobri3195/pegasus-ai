@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "strix-agent"
+name = "pegasus-ai-agent"
 version = "0.3.2"
 description = "Open-source AI Hackers for your apps"
-authors = ["Strix <hi@usestrix.com>"]
+authors = ["Lettu Kes dr. Muhammad Sobri Maulana, S.Kom, CEH, OSCP, OSCE <muhammadsobrimaulana31@gmail.com>"]
 readme = "README.md"
 license = "Apache-2.0"
 keywords = [
@@ -28,18 +28,18 @@ classifiers = [
   "Programming Language :: Python :: 3.12",
 ]
 packages = [
-  { include = "strix", format = ["sdist", "wheel"] }
+  { include = "pegasus_ai", from = ".", format = ["sdist", "wheel"] }
 ]
 include = [
   "LICENSE",
   "README.md",
-  "strix/**/*.jinja",
-  "strix/**/*.xml",
-  "strix/**/*.tcss"
+  "pegasus_ai/**/*.jinja",
+  "pegasus_ai/**/*.xml",
+  "pegasus_ai/**/*.tcss"
 ]
 
 [tool.poetry.scripts]
-strix = "strix.interface.main:main"
+pegasus-ai = "pegasus_ai.interface.main:main"
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -222,14 +222,14 @@ ignore = [
     "ARG001", # Unused function argument
     "PLR2004", # Magic value used in comparison
 ]
-"strix/tools/**/*.py" = [
+"pegasus_ai/tools/**/*.py" = [
     "ARG001", # Unused function argument (tools may have unused args for interface consistency)
 ]
 
 [tool.ruff.lint.isort]
 force-single-line = false
 lines-after-imports = 2
-known-first-party = ["strix"]
+known-first-party = ["pegasus_ai"]
 known-third-party = ["fastapi", "pydantic"]
 
 [tool.ruff.lint.pylint]
@@ -246,7 +246,7 @@ line-ending = "auto"
 # ============================================================================
 
 [tool.pyright]
-include = ["strix"]
+include = ["pegasus_ai"]
 exclude = ["**/__pycache__", "build", "dist"]
 pythonVersion = "3.12"
 pythonPlatform = "Linux"
@@ -305,7 +305,7 @@ include_trailing_comma = true
 force_grid_wrap = 0
 use_parentheses = true
 ensure_newline_before_comments = true
-known_first_party = ["strix"]
+known_first_party = ["pegasus_ai"]
 known_third_party = ["fastapi", "pydantic", "litellm", "tenacity"]
 
 # ============================================================================
@@ -317,7 +317,7 @@ minversion = "6.0"
 addopts = [
     "--strict-markers",
     "--strict-config",
-    "--cov=strix",
+    "--cov=pegasus_ai",
     "--cov-report=term-missing",
     "--cov-report=html",
     "--cov-report=xml",
@@ -330,7 +330,7 @@ python_classes = ["Test*"]
 asyncio_mode = "auto"
 
 [tool.coverage.run]
-source = ["strix"]
+source = ["pegasus_ai"]
 omit = [
     "*/tests/*",
     "*/migrations/*",
